@@ -1,0 +1,16 @@
+[/]
+foreground-color='rgb(118,86,123)'
+rewrap-on-resize=true
+visible-name='Marks'
+login-shell=false
+cell-width-scale=1.1000000000000001
+palette=['rgb(16,159,235)', 'rgb(136,49,4)', 'rgb(133,153,0)', 'rgb(181,137,0)', 'rgb(44,145,215)', 'rgb(211,54,130)', 'rgb(39,156,147)', 'rgb(131,157,190)', 'rgb(0,43,54)', 'rgb(203,75,22)', 'rgb(12,197,43)', 'rgb(237,152,152)', 'rgb(173,3,141)', 'rgb(108,113,196)', 'rgb(97,173,172)', 'rgb(213,217,187)']
+cursor-shape='block'
+use-custom-command=false
+use-theme-colors=false
+use-system-font=false
+font='Hack 11'
+bold-color-same-as-fg=false
+bold-color='rgb(110,70,164)'
+background-color='rgb(243,243,243)'
+audible-bell=true
