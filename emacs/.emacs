@@ -14,10 +14,10 @@
  '(c-basic-offset 4)
  '(c-default-style "ellemtel")
  '(compilation-scroll-output (quote first-error))
- '(custom-enabled-themes (quote (ample-light)))
+ '(custom-enabled-themes (quote (spacemacs-light)))
  '(custom-safe-themes
    (quote
-    ("ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "a2dd771a05705be2a6e6adb6ddbc7a27ebf49edab1dffdbefe243096becba7c9" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
  '(default-tab-width 4 t)
  '(desktop-file-name-format (quote tilde))
  '(desktop-load-locked-desktop nil)
@@ -59,12 +59,28 @@
      ("melpa" . "http://melpa.milkbox.net/packages/"))))
  '(package-selected-packages
    (quote
-    (python-django minimap jedi ag helm flycheck restclient ergoemacs-status mode-icons powerline pycoverage json-mode yaml-mode marmalade-client ## wgrep rainbow-delimiters magit flymake-python-pyflakes flycheck-pyflakes fiplr fastnav dumb-jump color-theme ample-theme)))
+    (spacemacs-theme white-theme python-django minimap jedi ag helm flycheck restclient ergoemacs-status mode-icons powerline pycoverage json-mode yaml-mode marmalade-client ## wgrep rainbow-delimiters magit flymake-python-pyflakes flycheck-pyflakes fiplr fastnav dumb-jump color-theme ample-theme)))
  '(scroll-conservatively 101)
  '(show-paren-mode t)
  '(tab-width 4)
  '(tex-default-mode (quote TeX-latex-mode))
  '(tool-bar-mode nil)
+ '(vc-annotate-background "#ffffff")
+ '(vc-annotate-color-map
+   (quote
+    ((20 . "#ab4642")
+     (50 . "#dc9656")
+     (80 . "#f7ca88")
+     (110 . "#a1b56c")
+     (140 . "#86c1b9")
+     (170 . "#7cafc2")
+     (200 . "#ab4642")
+     (230 . "#a16046")
+     (260 . "#181818")
+     (290 . "#282828")
+     (320 . "#383838")
+     (350 . "#585858"))))
+ '(vc-annotate-very-old-color "#585858")
  '(xterm-mouse-mode t))
 
 (custom-set-faces
@@ -72,7 +88,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight light :height 110 :width normal))))
  '(hl-line ((t (:background "color-236"))))
  '(vimish-fold-overlay ((t (:inherit highlight :background "red" :foreground "white"))))
  '(wgrep-face ((t (:inverse-video t)))))
@@ -141,7 +156,9 @@
 ;; (setq color-theme-is-global t)
 ;; (color-theme-initialize)
 ;; (color-theme-dark-laptop)
-(ample-light-theme)
+;; (ample-light-theme)
+;; (load-theme 'white)
+(load-theme 'spacemacs-light)
 (setq file-name-shadow-properties file-name-shadow-tty-properties)
 
 (global-set-key (kbd "C-c C-g") 'magit-status)
@@ -404,4 +421,3 @@
 ;;; dot_emacs ends here
 (put 'upcase-region 'disabled nil)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
