@@ -1,7 +1,3 @@
-;;; package --- Summary
-;;; Code:
-;;; Commentary:
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -13,32 +9,30 @@
  '(background-mode light)
  '(c-basic-offset 4)
  '(c-default-style "ellemtel")
- '(compilation-scroll-output (quote first-error))
- '(custom-enabled-themes (quote (spacemacs-light)))
+ '(compilation-scroll-output t)
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "a2dd771a05705be2a6e6adb6ddbc7a27ebf49edab1dffdbefe243096becba7c9" "ed317c0a3387be628a48c4bbdb316b4fa645a414838149069210b66dd521733f" default)))
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(default-tab-width 4 t)
  '(desktop-file-name-format (quote tilde))
  '(desktop-load-locked-desktop nil)
  '(desktop-save nil)
  '(desktop-save-mode nil)
  '(dired-listing-switches "-alh")
- '(dired-use-ls-dired nil)
+ '(dired-use-ls-dired t)
  '(display-time-mode t)
  '(fill-column 110)
  '(fiplr-ignored-globs
    (quote
     ((directories
-      (".git" ".svn" ".hg" ".bzr" ".tox"))
+      (".git" ".svn" ".hg" ".bzr" ".tox" "*.egg-info" "env"))
      (files
       (".#*" "*~" "*.so" "*.jpg" "*.png" "*.gif" "*.pdf" "*.gz" "*.zip" "*.aux" "*.pyc")))))
- '(flycheck-flake8-maximum-line-length 200)
- '(flycheck-python-flake8-executable "/usr/local/bin/flake8")
- '(flycheck-python-pylint-executable "/usr/local/bin/pylint")
+ '(git-commit-summary-max-length 50)
+ '(global-whitespace-mode t)
  '(grep-find-ignored-directories
    (quote
-    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" ".tox" "deprecated" "html" "htmlcov" "ccm-plugin-dummy")))
+    ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" ".tox" ".env" "_static*" "junit.xml*")))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(initial-major-mode (quote org-mode))
@@ -46,41 +40,40 @@
   ")
  '(ispell-dictionary "british")
  '(iswitchb-mode t)
- '(magit-log-section-arguments (quote ("--decorate" "-n256")))
+ '(json-reformat:pretty-string\? t)
+ '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(make-backup-files nil)
+ '(markdown-asymmetric-header t)
  '(menu-bar-mode nil)
- '(org-babel-load-languages (quote ((emacs-lisp . t) (python . t))))
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (python . t) (ledger . t) )))
  '(org-src-fontify-natively t)
  '(org-src-tab-acts-natively t)
+ '(org-src-window-setup (quote other-window))
  '(org-tags-column -110)
+ '(org-todo-keyword-faces
+   (quote
+    (("WIP" . org-wip)
+     ("BLOCKED" . org-blocked)
+     ("ACTIVE" . org-active)
+     ("DONE" . org-done))))
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO(t)" "WIP(w)" "ACTIVE(a)" "BLOCKED(b)" "DONE(d)"))))
  '(package-archives
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
-     ("melpa" . "http://melpa.milkbox.net/packages/"))))
+     ("melpa" . "http://melpa.org/packages/"))))
  '(package-selected-packages
    (quote
-    (spacemacs-theme white-theme python-django minimap jedi ag helm flycheck restclient ergoemacs-status mode-icons powerline pycoverage json-mode yaml-mode marmalade-client ## wgrep rainbow-delimiters magit flymake-python-pyflakes flycheck-pyflakes fiplr fastnav dumb-jump color-theme ample-theme)))
+    (browse-kill-ring ample-theme auctex buffer-move color-theme fastnav fiplr fsm gnuplot-mode indent-tools json-mode magit markdown-mode rainbow-delimiters restclient wgrep yafolding yaml-mode)))
  '(scroll-conservatively 101)
  '(show-paren-mode t)
+ '(split-height-threshold nil)
+ '(split-width-threshold 200)
  '(tab-width 4)
  '(tex-default-mode (quote TeX-latex-mode))
  '(tool-bar-mode nil)
- '(vc-annotate-background "#ffffff")
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#ab4642")
-     (50 . "#dc9656")
-     (80 . "#f7ca88")
-     (110 . "#a1b56c")
-     (140 . "#86c1b9")
-     (170 . "#7cafc2")
-     (200 . "#ab4642")
-     (230 . "#a16046")
-     (260 . "#181818")
-     (290 . "#282828")
-     (320 . "#383838")
-     (350 . "#585858"))))
- '(vc-annotate-very-old-color "#585858")
+ '(use-dialog-box nil)
  '(xterm-mouse-mode t))
 
 (custom-set-faces
@@ -88,22 +81,30 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Consolas" :foundry "microsoft" :slant normal :weight light :height 110 :width normal))))
  '(hl-line ((t (:background "color-236"))))
- '(vimish-fold-overlay ((t (:inherit highlight :background "red" :foreground "white"))))
- '(wgrep-face ((t (:inverse-video t)))))
+ '(magit-branch-current ((t (:inherit magit-branch-local :box 1 :underline t))))
+ '(magit-dimmed ((t (:foreground "grey40"))))
+ '(wgrep-face ((t (:inverse-video t))))
+ '(whitespace-line ((t (:underline t :foreground nil)))))
+
+;; Tell emacs that screen.xterm256color is an alias for xterm-256color
+(if (boundp 'term-file-aliases)
+    (add-to-list 'term-file-aliases
+                 '("screen.xterm-256color" . "xterm-256color")))
 
 (setq-default line-spacing 0.2)
+
+(setq-default
+ whitespace-line-column 120
+ whitespace-style '(face lines-tail tab-mark tabs trailing empty))
+
+(setq whitespace-style '(face lines-tail tab-mark tabs trailing empty))
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
-
-(if window-system
-    (progn ; In window system
-      (scroll-bar-mode -1)
-      (fringe-mode -1))
-  )
 
 (global-subword-mode)
 (display-time-mode)
@@ -135,36 +136,71 @@
 (global-set-key "\C-cfc" 'fiplr-clear-cache)
 (global-set-key "\C-cfd" 'fiplr-find-directory)
 
-;; (require 'vimish-fold)
-(global-set-key (kbd "C-c C-f C-f") 'vimish-fold)
-(global-set-key (kbd "C-c C-f C-d") 'vimish-fold-delete)
-(global-set-key (kbd "C-c C-f C-r") 'vimish-fold-delete-all)
+;; (require 'magit)
+(global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g g") 'magit-status)
+(global-set-key (kbd "C-c g b") 'magit-blame-addition)
 
-;; begin mac specific shite
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(global-set-key (kbd "C-/") 'undo)
-(global-set-key (kbd "<wheel-up>") 'scroll-up-10-lines)
-(global-set-key (kbd "<mouse-5>") 'scroll-up-10-lines)
-(global-set-key (kbd "<Wheel-down>") 'scroll-down-10-lines)
-(global-set-key (kbd "<mouse-4>") 'scroll-down-10-lines)
-;; end
+;; (require 'flyspell)
+(global-set-key (kbd "C-c s b") 'flyspell-buffer)
+(global-set-key (kbd "C-c s r") 'flyspell-region)
+(global-set-key (kbd "C-c s m") 'flyspell-mode)
+
+;; (require 'browse-kill-ring)
+(global-set-key (kbd "C-x y") 'browse-kill-ring)
+
+;; (require 'yafolding) yafolding-debug yafolding-ellipsis
+(global-set-key (kbd "C-c l m") 'yafolding-mode)
+(add-hook 'yafolding-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c l u") 'yafolding-go-parent-element)
+            (local-set-key (kbd "C-c l H") 'yafolding-hide-all)
+            (local-set-key (kbd "C-c l h") 'yafolding-hide-element)
+            (local-set-key (kbd "C-c l p") 'yafolding-hide-parent-element)
+            (local-set-key (kbd "C-c l S") 'yafolding-show-all)
+            (local-set-key (kbd "C-c l s") 'yafolding-show-element)
+            (local-set-key (kbd "C-c l T") 'yafolding-toggle-all)
+            (local-set-key (kbd "C-c l t") 'yafolding-toggle-element)
+            ))
+
+;; (require 'indent-tools)
+(global-set-key (kbd "C-c i m") 'indent-tools-minor-mode)
+(add-hook 'indent-tools-minor-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c i <") 'indent-tools-demote)
+            (local-set-key (kbd "C-c i >") 'indent-tools-indent)
+            (local-set-key (kbd "C-c i d") 'indent-tools-goto-child)
+            (local-set-key (kbd "C-c i e") 'indent-tools-goto-end-of-tree)
+            (local-set-key (kbd "C-c i l") 'indent-tools-end-of-level)
+            (local-set-key (kbd "C-c i n") 'indent-tools-goto-next-sibling)
+            (local-set-key (kbd "C-c i p") 'indent-tools-goto-previous-sibling)
+            (local-set-key (kbd "C-c i u") 'indent-tools-goto-parent)
+            (local-set-key (kbd "C-c i k") 'indent-tools-kill-tree)
+            ))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-M-^") 'org-insert-todo-heading)))
 
 (package-initialize)
-;; (require 'color-theme)
-;; (setq color-theme-is-global t)
-;; (color-theme-initialize)
-;; (color-theme-dark-laptop)
-;; (ample-light-theme)
-;; (load-theme 'white)
-(load-theme 'spacemacs-light)
+(setq warning-minimum-level :emergency)
+(require 'color-theme)
+(setq color-theme-is-global t)
+(color-theme-initialize)
+;; (ample-theme) -> Spacemacs-light
+(load-theme spacemacs-light)
 (setq file-name-shadow-properties file-name-shadow-tty-properties)
 
 (global-set-key (kbd "C-c C-g") 'magit-status)
-(global-set-key (kbd "C-c C-r") 'revert-buffer)
 
-(dumb-jump-mode)
+(require 'transient)
+(transient-bind-q-to-quit)  ;; Restore old magit q behaviour
+
+;; Disable L key in magit
+(with-eval-after-load 'magit
+  (define-key magit-mode-map (kbd "L") 'magit-log-popup)
+  )
+(global-set-key (kbd "C-c C-r") 'revert-buffer)
 
 (defun fsh-windmove-up()
   (interactive)
@@ -235,7 +271,7 @@
     (while (get-buffer buffer-name)
       (setq id (+ id 1))
       (setq buffer-name (concat "*term-" (number-to-string id) "*")))
-    (term "/bin/bash")
+    (term "/bin/zsh") ;; TODO -- Get terminal environment and use that, defaulting to bash if missing
     (rename-buffer buffer-name)))
 
 (defalias 'fterm 'fsh-term)
@@ -338,86 +374,82 @@
       (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
       (ac-config-default)))
 
-;; Jedi config
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)  
+;;
+;; Customise auto-mode-alist
+;;
+(assq-delete-all "\\.re?st\\'" auto-mode-alist)
+;; Mark edit - for tabnine
+(require 'company-tabnine)
+;; (use-package company-tabnine :ensure t)
+(add-to-list 'company-backends #'company-tabnine)
+;; Trigger completion immediately.
+(setq company-idle-delay 0)
+
+;; Number the candidates (use M-1, M-2 etc to select completions).
+(setq company-show-numbers t)
+
+;; Use the tab-and-go frontend.
+;; Allows TAB to select and complete at the same time.
+(company-tng-configure-default)
+(setq company-frontends
+      '(company-tng-frontend
+        company-pseudo-tooltip-frontend
+        company-echo-metadata-frontend))
+;; End of Mark edit - TabNine`
+
+(add-to-list 'auto-mode-alist '("\\.rst\\'" . rst-mode))
+(add-to-list 'auto-mode-alist '("\\.rest\\'" . restclient-mode))
+(add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python-mode))
+
+;;
+;; Extend python-mode syntax highlighting
+;;
+(font-lock-add-keywords
+ 'python-mode
+ `((, (rx symbol-start (group (1+ (or word ?_))) (or "Error" "Exception") symbol-end) . 'font-lock-type-face))
+)
+
+;;
+;; Add extra org-mode faces
+;;
+(defface org-wip
+  '((t :foreground "#eace64"
+     ))
+  "Face used for todo keywords that indicate WIP items."
+  :group 'org-mode)
+
+(defface org-blocked
+  '((t :foreground "#ffbb00"
+     ))
+  "Face used for todo keywords that indicate BLOCKED items."
+  :group 'org-mode)
+
+(defface org-active
+  '((t :foreground "#00bbff"
+     ))
+  "Face used for todo keywords that indicate ACTIVE items."
+  :group 'org-mode)
+
+
+
 ;;
 ;; Load external things
 ;;
-;;(load-file "~/.dotfiles/elisp/fsh-log.el")
-;;(load-file "~/.dotfiles/elisp/fsh-org.el")
-;;(load-file "~/.dotfiles/elisp/fsh-switch.el")
-;;(load-file "~/.dotfiles/elisp/fsh-window.el")
+(load-file "~/.emacs.d/iswitchb.el")
+(iswitchb-mode)
 
-;; (setq-default mode-line-format
-;;   (list
-;;     ;; File status
-;;     '(:eval (propertize " %b " 'face 'bold
-;;        'help-echo (buffer-file-name)))
-;;     '(:eval (when (buffer-modified-p)
-;;       (propertize "* " 'face 'bold
-;;         'help-echo "Buffer has been modified")))
+;; (load-file "~/.dotfiles/elisp/fsh-log.el")
+;; (load-file "~/.dotfiles/elisp/fsh-org.el")
+;; (load-file "~/.dotfiles/elisp/fsh-switch.el")
+;; (load-file "~/.dotfiles/elisp/fsh-window.el")
 
-;;     '(:eval (when buffer-read-only
-;;        (propertize "RO " 'face 'bold
-;;          'help-echo "Buffer is read-only")))
+;; Marks Added config
+(use-package ledger-mode
+             :mode ("\\.dat\\'"
+                   "\\.ledger\\'")
+             :custom (ledger-clear-whole-transactions t))
+(use-package flycheck-ledger :after ledger-mode)
 
-;;     ;; Cursor location
-;;     "("
-;;     (propertize "%02l")
-;;     ","
-;;     (propertize "%02c")
-;;     ") "
-
-;;     ;; File location
-;;     "["
-;;     (propertize "%p")
-;;     "/"
-;;     (propertize "%I")
-;;     "] "
-
-;;     ;; Major Mode
-;;     "["
-;;     '(:eval (propertize "%m" 'face 'bold
-;;       ' help-echo buffer-file-coding-system))
-;;     "] "
-
-;;     ;; Clock
-;;     '(:eval (propertize (format-time-string "%H:%M ")
-;;                       'help-echo
-;;                       (concat (format-time-string "%c; ")
-;;                               (emacs-uptime "Uptime:%hh"))))
-
-;;     ;; Working path
-;;     (propertize "| %@%f")
-;; ))
-;; Marks Status bar
-(require 'ergoemacs-status)
-(ergoemacs-status-mode)    
-(defun tox ()
-  "Add tox py27 function."
-  (interactive)
-  (compile "tox -epy27"))
-(global-set-key (kbd "C-x x") 'tox)
-(defun all_tox()
-  "Add tox function."
-  (interactive)
-  (compile "tox"))
-(global-set-key (kbd "C-x t") 'all_tox)
-(defun cover()
-  "Add cover function."
-  (interactive)
-  (compile "tox -ecover"))
-(global-set-key (kbd "C-x c") 'cover)
-(defun pep8 ()
-  "Add pep8 function."
-  (interactive)
-  (compile "tox -epep8"))
-(global-set-key (kbd "C-x p") 'pep8)
-;; Global Key set.
-"Turns on/off indents"
-(global-set-key (kbd "C-x n") 'electric-indent-mode)
-(provide 'dot_emacs)
-;;; dot_emacs ends here
-(put 'upcase-region 'disabled nil)
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; Autopep8
+(require 'py-autopep8)
+(add-hook 'python-mode-hook 'py-autopep8-enable-on-save)
