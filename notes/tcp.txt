@@ -1,0 +1,44 @@
+
+Understanding TCP Protocol
+It is considered a connection-oriented protocol, which means that connection is established and maintained until the time application programs at each of the end are done exchanging messages. It also decides how to break the application data in the form of packets that the networks deliver, then send packets and finally accept those packets from the network layer, and manage flow control. In the OSI model, TCP occupies parts of Layer 4, Transport Layer, and parts of Layer 5, the Session Layer.
+
+Let us take an example. When the webserver sends an HTML file to the client, it makes use of the HTTP protocol. The HTTP program layer then requests the TCP layer to set the connection and then send the file. TCP stack then divides the file in the form of packets, numbers them and finally forwards them to the Internet Protocol layer to deliver. Though each of the packets in transmission has the same source and destination IP addresses, packets are still sent along various routes. TCP program layer in the client computer always waits until and unless all the packets have already arrived, and afterwards, it acknowledges the ones it has received and then it asks for the retransmission.
+
+Advantages of TCP Protocol
+It is quite a reliable protocol.
+It also makes sure that the data reaches the desired destination in the same order that it was sent.
+It is also connection-oriented.
+It gives an error-checking mechanism as well as a mechanism of recovery.
+It also exhibits communication that is end to end.
+Also, it gives flow control.
+Finally, this protocol exhibits server (full-duplex), which means it can perform receiver and senders roles.
+TCP Protocol Scope
+TCP header’s minimum length is 20 bytes and maximum length 60 bytes.
+
+Source Port: It is 16-bit, and it identifies the application process’s source port on sending the device.
+Destination Port: It is also 16-bit, and it identifies the application process’s destination port on receiving the device.
+Data Offset (4-bits): It is 4 bits, and it mentions the size of the TCP header and data offset in the present packet in the entire TCP segment.
+Reserved (3-bits): Everything is set to zero by default and is reserved for future use.
+ECE: It has got two interpretations :
+In case the SYN bit is 0, it means that ECE means that the IP packet has got its congestion experience, that is, the CE bit set.
+In case the SYN bit is 1, it means that ECE means that the device is capable of ECT.
+URG: URG signifies that the Urgent Pointer field has important data and should be processed.
+ACK: ACK signifies that the Acknowledgement field has got importance. In case ACK is 0, it means that the packet is not having any acknowledgement.
+PSH: When PSH is set, it is requested to receive the station to PUSH the data whenever it comes to receiving the application but without buffering it.
+RST: Reset flag has got these features :
+RST is needed to deny an incoming connection.
+RST is needed to reject a segment too.
+RST is needed to restart the connection.
+SYN: SYN flag is needed to set the connection between hosts.
+What Can You do with TCP Protocol?
+TCP Protocol works in Server or client model. The client always starts the connection, and the server would either accept it or reject it. This three-way handshaking is essentially required for connection management.
+
+The client starts the connection and then sends the segment along with the Sequence number. Then, the server would acknowledge it along with its SN (Sequence no.) and with an ACK of the client segment that is one more than the client’s sequence number. Now, the client, after getting the ACK of the segment, sends an acknowledgement of the Server’s response.
+
+Both server or client can send the TCP segment and the FIN flag that is set to 1. Whenever the receiving end reverts it back by Acknowledging the FIN, that particular direction of the TCP communication gets closed, and then the connection gets released.
+
+Working with TCP Protocol
+TCP uses port numbers to know which application processes it needs to hand over the data segment. Alongside this, it uses the sequence numbers to synchronize along with the remote host. Every data segment is then sent as well as received along with SN’s. Sender makes sure the last of the data segment that has been received by Receiver whenever it gets the acknowledgement. The receiver is aware of the last segment that the sender sent by mentioning the most recent received packet’s sequence number(SN).
+
+Conclusion
+Finally, we have discussed major components of the networks and TCP/IP; we have got the needed background to look into quite critical issues of security. When we are aware of how networks are built, it gives us an understanding of which physical vulnerabilities are being introduced when we choose one network design over any other and knowing how are the packets formed provides us with an understanding of how they are crafted to achieve a purpose. Also, we are aware of how the packets are being transmitted and delivered provides a good understanding of what could possibly happen to the packets.
