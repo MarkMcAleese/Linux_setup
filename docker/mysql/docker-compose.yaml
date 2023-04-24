@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: mysql_container
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql 
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_USER=test
+      - MYSQL_DATABASE=sample_db
